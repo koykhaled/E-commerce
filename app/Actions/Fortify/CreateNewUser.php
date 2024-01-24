@@ -10,7 +10,6 @@ use Laravel\Jetstream\Jetstream;
 
 class CreateNewUser implements CreatesNewUsers
 {
-    use PasswordValidationRules;
 
     /**
      * Validate and create a newly registered user.
@@ -22,8 +21,17 @@ class CreateNewUser implements CreatesNewUsers
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => $this->passwordRules(),
-            'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
+            'password' => 'required|string|min:8',
+            'cpassword' => 'required|string|same:password'
+        ], [
+            'name.required' => "Name is required",
+            'email.required' => "Email is required",
+            'email.email' => "Enter a vaild Email",
+            'email.unique' => "Enter a unique Email",
+            'password.min' => 'Password Should contain at least 8 chars',
+            'password.required' => 'Password is required',
+            'cpassword.same' => "passwords didn't match",
+            'cpassword.required' => "confirm password please"
         ])->validate();
 
         return User::create([
