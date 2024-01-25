@@ -13,6 +13,7 @@ trait PasswordValidationRules
      */
     protected function passwordRules(): array
     {
-        return ['required', 'string', Password::default(), 'min:8'];
+
+        return ['required', 'string', Password::default()];
     }
 }
