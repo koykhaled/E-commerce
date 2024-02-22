@@ -41,35 +41,35 @@
                         <div class="topbar-menu right-menu">
                             <ul>
                                 @auth
-                                    <li class="menu-item"><a title="logout" href="{{ route('logout') }}"
-                                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
-                                    </li>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="post">
-                                        @csrf
-                                    </form>
-                                @else
-                                    <li class="menu-item"><a title="Register or Login" href="{{ route('login') }}">Login</a>
-                                    </li>
-                                    <li class="menu-item"><a title="Register or Login"
-                                            href="{{ route('register') }}">Register</a>
-                                    @endauth
+                                <li class="menu-item"><a title="logout" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
                                 </li>
+                                <form id="logout-form" action="{{ route('logout') }}" method="post">
+                                    @csrf
+                                </form>
+                                @else
+                                <li class="menu-item"><a title="Register or Login" href="{{ route('login') }}">Login</a>
+                                </li>
+                                <li class="menu-item"><a title="Register or Login"
+                                        href="{{ route('register') }}">Register</a>
+                                </li>
+                                @endauth
                                 {{-- <li class="menu-item lang-menu menu-item-has-children parent">
                                     <a title="English" href="#"><span class="img label-before"><img
                                                 src="{{ asset('assets/images/lang-en.png') }}"
-                                                alt="lang-en"></span>English<i class="fa fa-angle-down"
-                                            aria-hidden="true"></i></a>
-                                    <ul class="submenu lang">
+                                alt="lang-en"></span>English<i class="fa fa-angle-down"
+                                    aria-hidden="true"></i></a>
+                                <ul class="submenu lang">
 
-                                        <li class="menu-item"><a title="german" href="#"><span
-                                                    class="img label-before"><img
-                                                        src="{{ asset('assets/images/lang-ger.png') }}"
-                                                        alt="lang-ger"></span>German</a></li>
-                                        <li class="menu-item"><a title="french" href="#"><span
-                                                    class="img label-before"><img
-                                                        src="{{ asset('assets/images/lang-fra.png') }}"
-                                                        alt="lang-fre"></span>French</a></li>
-                                    </ul>
+                                    <li class="menu-item"><a title="german" href="#"><span
+                                                class="img label-before"><img
+                                                    src="{{ asset('assets/images/lang-ger.png') }}"
+                                                    alt="lang-ger"></span>German</a></li>
+                                    <li class="menu-item"><a title="french" href="#"><span
+                                                class="img label-before"><img
+                                                    src="{{ asset('assets/images/lang-fra.png') }}"
+                                                    alt="lang-fre"></span>French</a></li>
+                                </ul>
                                 </li> --}}
 
                             </ul>
@@ -86,8 +86,7 @@
             <!--authentication-->
 
             @yield('authentication')
-
-
+            @yield('content')
 
             <!--On Sale-->
 

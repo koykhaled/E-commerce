@@ -26,3 +26,14 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+
+Route::get('/app', function () {
+    return view('products.index');
+});
+Route::get('/shop', function () {
+    return view('products.shop');
+});
+Route::get('/cart', function () {
+    return view('products.cart');
+});
