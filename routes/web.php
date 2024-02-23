@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,10 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -28,9 +25,7 @@ Route::middleware([
 });
 
 
-Route::get('/app', function () {
-    return view('products.index');
-});
+Route::get('/', [HomeController::class, 'index'])->name('products.index');
 Route::get('/shop', function () {
     return view('products.shop');
 });

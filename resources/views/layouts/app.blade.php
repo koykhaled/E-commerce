@@ -38,13 +38,7 @@
 
     <main id="main">
         <div class="container">
-
-            <!--authentication-->
-
             @yield('content')
-
-            <!--On Sale-->
-
         </div>
 
     </main>

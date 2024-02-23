@@ -6,18 +6,18 @@
                     <div class="topbar-menu right-menu">
                         <ul>
                             @auth
-                            <li class="menu-item"><a title="logout" href="{{ route('logout') }}"
-                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
-                            </li>
-                            <form id="logout-form" action="{{ route('logout') }}" method="post">
-                                @csrf
-                            </form>
+                                <li class="menu-item"><a title="logout" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                                </li>
+                                <form id="logout-form" action="{{ route('logout') }}" method="post">
+                                    @csrf
+                                </form>
                             @else
-                            <li class="menu-item"><a title="Register or Login" href="{{ route('login') }}">Login</a>
-                            </li>
-                            <li class="menu-item"><a title="Register or Login"
-                                    href="{{ route('register') }}">Register</a>
-                            </li>
+                                <li class="menu-item"><a title="Register or Login" href="{{ route('login') }}">Login</a>
+                                </li>
+                                <li class="menu-item"><a title="Register or Login"
+                                        href="{{ route('register') }}">Register</a>
+                                </li>
                             @endauth
                             <li class="menu-item lang-menu menu-item-has-children parent">
                                 <a title="English" href="#"><span class="img label-before"><img
@@ -58,22 +58,17 @@
                                     <a href="#" class="link-control">All Category</a>
                                     <ul class="list-cate">
                                         <li class="level-0">All Category</li>
-                                        <li class="level-1">-Electronics</li>
-                                        <li class="level-2">Batteries & Chargens</li>
-                                        <li class="level-2">Headphone & Headsets</li>
-                                        <li class="level-2">Mp3 Player & Acessories</li>
-                                        <li class="level-1">-Smartphone & Table</li>
-                                        <li class="level-2">Batteries & Chargens</li>
-                                        <li class="level-2">Mp3 Player & Headphones</li>
-                                        <li class="level-2">Table & Accessories</li>
-                                        <li class="level-1">-Electronics</li>
-                                        <li class="level-2">Batteries & Chargens</li>
-                                        <li class="level-2">Headphone & Headsets</li>
-                                        <li class="level-2">Mp3 Player & Acessories</li>
-                                        <li class="level-1">-Smartphone & Table</li>
-                                        <li class="level-2">Batteries & Chargens</li>
-                                        <li class="level-2">Mp3 Player & Headphones</li>
-                                        <li class="level-2">Table & Accessories</li>
+                                        @foreach ($categories as $category)
+                                            <li class="level-1">
+                                                -{{ $category->name }}
+                                                <ul>
+                                                    @foreach ($category->subCategories as $subCategory)
+                                                        <li class="level-1">{{ $subCategory->name }}</li>
+                                                    @endforeach
+                                                </ul>
+                                            </li>
+                                        @endforeach
+
                                     </ul>
                                 </div>
                             </form>
