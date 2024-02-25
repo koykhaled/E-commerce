@@ -22,7 +22,7 @@ return new class extends Migration {
             $table->unsignedBigInteger('quantity')->default(5);
             $table->string('SKU')->unique();
             $table->string('image')->nullable();
-            $table->foreignId('category_id')->constrained('categories')->cascadeOnDelete();
+            $table->foreignId('category_id')->constrained('sub_categories')->cascadeOnDelete();
             $table->timestamps();
         });
     }
