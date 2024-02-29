@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,10 +25,11 @@ use Illuminate\Support\Facades\Route;
 // });
 
 
-Route::get('/', [HomeController::class, 'index'])->name('products.index');
-Route::get('/shop', function () {
-    return view('products.shop');
-});
-Route::get('/cart', function () {
-    return view('products.cart');
+
+Route::group(['middleware' => ['auth', 'verified']], function () {
+    Route::get('/', [ProductController::class, 'index'])->name('products.index');
+
+    Route::group(['prefix' => 'products'], function () {
+        Route::get('/{product}', [ProductController::class, 'show'])->name('prdoucs.detail');
+    });
 });

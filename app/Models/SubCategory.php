@@ -25,4 +25,10 @@ class SubCategory extends Model
             $model->slug = Str::slug($model->name);
         });
     }
+
+
+    public function products()
+    {
+        return $this->hasMany(Product::class, 'category_id');
+    }
 }
